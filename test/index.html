@@ -29,7 +29,7 @@
 
     <script>
         new MonitorJS().init({
-            url:"http://baidu.com/api",    //上报错误地址
+            url:"",    //上报错误地址
             consoleError:true,
             vueError:true,  //是否上报Vue错误
             vue:Vue,
@@ -41,12 +41,15 @@
                         filterOne:getDynamicParams(),
                     }
                 }
+            },
+            errorAfter:function (info) { // 错误回调
+                console.info(11,info)
             }
         });
 
         new MonitorJS().monitorPerformance({
             pageId:"page_0001",
-            url:"http://baidu.com/api/performance",    //上报错误地址
+            url:"",    //上报错误地址
             isRXHR:false,
             extendsInfo:{   //扩展信息，一般用于数据数据持久化区分
                 module:"Touch站",

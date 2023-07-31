@@ -29,7 +29,8 @@ class MonitorJS {
         this.vueError = options.vueError === true;  //显式配置
         let reportUrl = options.url;//上报错误地址
         let extendsInfo = options.extendsInfo || {};  //扩展信息（一般用于系统个性化分析）
-        let param = { reportUrl, extendsInfo };
+        let errorAfter = options.errorAfter // 捕捉错误后回调
+        let param = { reportUrl, extendsInfo, errorAfter };
         if (this.jsError) {
             new JsError(param).handleError();
         }

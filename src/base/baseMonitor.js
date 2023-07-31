@@ -24,6 +24,7 @@ class BaseMonitor {
 
         this.reportUrl = params.reportUrl; //上报错误地址
         this.extendsInfo = params.extendsInfo; //扩展信息
+        this.errorAfter = params.errorAfter; //错误回调
     }
 
     /**
@@ -57,6 +58,7 @@ class BaseMonitor {
             //记录日志
             TaskQueue.add(this.reportUrl,errorInfo);
 
+            utils.isFunction(this.errorAfter) && this.errorAfter(errorInfo);
         } catch (error) {
             console.log(error);
         }
